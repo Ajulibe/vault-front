@@ -5,7 +5,8 @@
     "preview": "vite preview",
     "prepare": "husky",
     "commit": "git-cz",
-    "test": "vitest"
+    "test": "vitest",
+    "lint": "eslint --fix . && prettier --write ."
   },
   "dependencies": {
     "clsx": "^2.1.1",
