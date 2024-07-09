@@ -1,10 +1,10 @@
-import { EventColors } from '@/types'
+import { NotificationColors } from '@/types'
 import React from 'react'
 import styles from './Pill.module.scss'
 
 interface PillProps {
   text: string
-  eventType: keyof typeof EventColors
+  eventType: keyof typeof NotificationColors
 }
 
 const rgbaToRgb = (rgba: string, alpha: number): string => {
@@ -13,7 +13,7 @@ const rgbaToRgb = (rgba: string, alpha: number): string => {
 }
 
 const Pill: React.FC<PillProps> = ({ text, eventType }) => {
-  const color = EventColors[eventType]
+  const color = NotificationColors[eventType]
   const lightColor = rgbaToRgb(color, 0.1)
   const dotColor = rgbaToRgb(color, 0.6)
 

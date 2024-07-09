@@ -1,4 +1,4 @@
-import { TEvent, TEventType } from '@/types'
+import { TNotification, TNotificationType } from '@/types'
 
 import CopyableCode from '../CopyableCode/CopyableCode'
 import Pill from '../Pill/Pill'
@@ -9,10 +9,10 @@ import styles from './Table.module.scss'
 import { toast } from 'react-toastify'
 
 interface ITableProps {
-  rows: TEvent[]
+  rows: TNotification[]
 }
 
-export const EventLabels: { [key in TEventType]: string } = {
+export const EventLabels: { [key in TNotificationType]: string } = {
   TRANSACTION_SENT: 'Transactions sent',
   TRANSACTION_RECEIVED: 'Transactions received',
   ACCOUNT_CREATED: 'Account created'
@@ -30,7 +30,7 @@ const Table: React.FC<ITableProps> = ({ rows }) => {
     copyToClipboard(info, notify)
   }
 
-  const formatData = (event: TEvent): React.ReactNode => {
+  const formatData = (event: TNotification): React.ReactNode => {
     switch (event.type) {
       case 'TRANSACTION_SENT':
         return (

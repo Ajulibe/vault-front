@@ -1,7 +1,7 @@
 import './styles/index.scss'
 import 'react-toastify/dist/ReactToastify.css'
 
-import App from './pages/App'
+import App from '@/pages/app/App'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ToastContainer } from 'react-toastify'

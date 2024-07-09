@@ -1,9 +1,9 @@
 import React from 'react'
-import { TSeachEvents } from '@/types'
+import { TSearchNotifications } from '@/types'
 import styles from './Dropdown.module.scss'
 
 interface IDropdownProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  options: TSeachEvents
+  options: TSearchNotifications
   defaultValue?: string
   value?: string
 }

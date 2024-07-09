@@ -1,8 +1,8 @@
-export type TEventType = 'TRANSACTION_SENT' | 'TRANSACTION_RECEIVED' | 'ACCOUNT_CREATED'
+export type TNotificationType = 'TRANSACTION_SENT' | 'TRANSACTION_RECEIVED' | 'ACCOUNT_CREATED'
 
-export type TSeachEvents = Array<{ name: string; value: TEventType | string }>
+export type TSearchNotifications = Array<{ name: string; value: TNotificationType | string }>
 
-export interface ITransactionEventsData {
+export interface ITransactionNotificationsData {
   amount: number
   from: string
   to: string
@@ -16,29 +16,32 @@ interface IAccountCreatedData {
   id: number
 }
 
-export type IEventsData = ITransactionEventsData | IAccountCreatedData
+export type INotificationsData = ITransactionNotificationsData | IAccountCreatedData
 
-export interface Notif<T extends IEventsData> {
+export interface Notif<T extends INotificationsData> {
   id: number
   type: string
   data: T
 }
 
-export interface TTransactionSentEvent extends Notif<ITransactionEventsData> {
+export interface TTransactionSentNotification extends Notif<ITransactionNotificationsData> {
   type: 'TRANSACTION_SENT'
 }
 
-export interface TTransactionReceivedEvent extends Notif<ITransactionEventsData> {
+export interface TTransactionReceivedNotification extends Notif<ITransactionNotificationsData> {
   type: 'TRANSACTION_RECEIVED'
 }
 
-export interface TAccountCreatedEvent extends Notif<IAccountCreatedData> {
+export interface TAccountCreatedNotification extends Notif<IAccountCreatedData> {
   type: 'ACCOUNT_CREATED'
 }
 
-export type TEvent = TTransactionSentEvent | TTransactionReceivedEvent | TAccountCreatedEvent
+export type TNotification =
+  | TTransactionSentNotification
+  | TTransactionReceivedNotification
+  | TAccountCreatedNotification
 
-export enum EventColors {
+export enum NotificationColors {
   TRANSACTION_SENT = 'rgba(255, 96, 57, 1)',
   TRANSACTION_RECEIVED = 'rgba(16, 206, 62)',
   ACCOUNT_CREATED = 'rgba(6, 196, 224)'

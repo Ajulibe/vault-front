@@ -1,10 +1,10 @@
 import Spinner from '@/components/Spinner/Spinner'
-import { TEvent } from '@/types'
+import { TNotification } from '@/types'
 import Table from '@/components/Table/Table'
 import styles from './tabledisplay.module.scss'
 
 interface ITableDisplayViewProps {
-  data: TEvent[] | []
+  data: TNotification[] | []
   isLoading: boolean
 }
 

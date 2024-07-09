@@ -32,6 +32,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
+    "types": ["@testing-library/jest-dom"],
     "paths": {
       "@/*": ["./src/*"]
     }
