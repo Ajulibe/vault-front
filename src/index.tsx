@@ -1,11 +1,14 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import './styles/index.scss'
+import 'react-toastify/dist/ReactToastify.css'
 
-import "./index.css";
-import App from "./App";
+import App from './pages/App'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { ToastContainer } from 'react-toastify'
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-);
+    <ToastContainer />
+  </React.StrictMode>
+)
