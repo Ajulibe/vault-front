@@ -1,4 +1,7 @@
 {
+  "name": "notifications-dashbaoard",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
@@ -64,6 +67,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "private": true
+  }
 }

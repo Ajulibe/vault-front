@@ -44,9 +44,9 @@ const NotificationData = ({ notification }: INotificationDataProps) => {
             <CopyableCode text={notification.data.from} />
           </span>
         )
-      case 'ACCOUNT_CREATED':
+      case 'ACCOUNT_CREATED': {
         const currency =
-          currencyMapping[notification.data.currency.toLowerCase()] || notification.data.currency
+          currencyMapping[notification.data.currency.toLowerCase()] ?? notification.data.currency
         return (
           <span>
             {notification.data.name} was created{' '}
@@ -55,6 +55,7 @@ const NotificationData = ({ notification }: INotificationDataProps) => {
             </span>
           </span>
         )
+      }
       default:
         return <span></span>
     }
