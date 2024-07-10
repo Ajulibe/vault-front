@@ -66,7 +66,10 @@ const Table: React.FC<ITableProps> = ({ rows }) => {
         const currency = currencyMapping[event.data.currency.toLowerCase()] || event.data.currency
         return (
           <span>
-            {currency} Account {event.data.name} created
+            {event.data.name} was created{' '}
+            <span className={styles.createdAccount}>
+              🎊 <b>{currency}</b>
+            </span>
           </span>
         )
       default:
@@ -88,7 +91,7 @@ const Table: React.FC<ITableProps> = ({ rows }) => {
           rows.map((row) => (
             <tr
               key={row.id}
-              className={clsx(styles.dataRow, {
+              className={clsx({
                 [styles.receivedRow as string]: row.type === 'TRANSACTION_RECEIVED',
                 [styles.sentRow as string]: row.type === 'TRANSACTION_SENT',
                 [styles.createdRow as string]: row.type === 'ACCOUNT_CREATED'

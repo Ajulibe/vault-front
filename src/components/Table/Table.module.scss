@@ -11,8 +11,8 @@
 .table {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 2px;
-  border: 1px solid $color-gray-border;
+  border-spacing: 0px;
+  border: 1px solid $color-black-900;
   border-radius: 8px;
 
   tr {
@@ -22,26 +22,17 @@
 
   th,
   td {
-    border: 1px solid $color-gray-border;
     padding: 8px;
   }
 
-  tbody,
-  thead,
-  tr:first-of-type,
-  td:first-of-type {
+  thead th:first-of-type,
+  tbody tr:first-of-type td:first-of-type {
     border-top-left-radius: 8px;
   }
 
-  tbody,
-  thead,
-  tr:first-of-type,
-  td:last-of-type {
+  thead th:last-of-type,
+  tbody tr:first-of-type td:last-of-type {
     border-top-right-radius: 8px;
-  }
-
-  th {
-    border-radius: 8px;
   }
 
   tbody tr:last-of-type td:first-of-type {
@@ -61,6 +52,7 @@ thead {
 
 tbody {
   border: 1px solid $color-gray-border;
+  overflow: hidden;
 }
 
 .receivedAmount {
@@ -103,4 +95,8 @@ tbody {
 
 .actionText {
   margin: 0 4px;
+}
+
+.createdAccount {
+  @include amountStyle($color-blue-600);
 }

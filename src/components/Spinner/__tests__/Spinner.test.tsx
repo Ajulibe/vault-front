@@ -14,7 +14,6 @@ describe('Components:  Spinner.tsx', () => {
 
   test('should render correctly', () => {
     const spinner = screen.getByTestId('loading-icon')
-    screen.debug()
     expect(spinner).toBeInTheDocument()
   })
 })
