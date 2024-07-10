@@ -1,12 +1,9 @@
 import { TNotification, TNotificationType } from '@/types'
 
-import CopyableCode from '../CopyableCode/CopyableCode'
+import NotificationData from './NotificationData'
 import Pill from '../Pill/Pill'
-import React from 'react'
 import clsx from 'clsx'
-import { copyToClipboard } from '@/utils/copyToClipboard'
 import styles from './Table.module.scss'
-import { toast } from 'react-toastify'
 
 interface ITableProps {
   rows: TNotification[]
@@ -18,94 +15,41 @@ export const EventLabels: { [key in TNotificationType]: string } = {
   ACCOUNT_CREATED: 'Account created'
 }
 
-const currencyMapping: { [key: string]: string } = {
-  bitcoin: 'BTC',
-  ethereum: 'ETH'
-}
-
-const Table: React.FC<ITableProps> = ({ rows }) => {
-  const notify = () => toast('Copied to clipboard')
-
-  const handleCopyData = (info: string) => {
-    copyToClipboard(info, notify)
-  }
-
-  const formatData = (event: TNotification): React.ReactNode => {
-    switch (event.type) {
-      case 'TRANSACTION_SENT':
-        return (
-          <span className={styles.eventDescription}>
-            <CopyableCode text={event.data.from} onCopy={handleCopyData} />
-            <span className={styles.actionText}>sent</span>
-            <span className={styles.sentAmount}>
-              <b>
-                {event.data.amount}
-                {event.data.unit}
-              </b>
-            </span>
-            <span className={styles.actionText}>to</span>
-            <CopyableCode text={event.data.to} onCopy={handleCopyData} />
-          </span>
-        )
-      case 'TRANSACTION_RECEIVED':
-        return (
-          <span className={styles.eventDescription}>
-            <CopyableCode text={event.data.to} onCopy={handleCopyData} />
-            <span className={styles.actionText}>received</span>
-            <span className={styles.receivedAmount}>
-              <b>
-                {event.data.amount}
-                {event.data.unit}
-              </b>
-            </span>
-            <span className={styles.actionText}>from</span>
-            <CopyableCode text={event.data.from} onCopy={handleCopyData} />
-          </span>
-        )
-      case 'ACCOUNT_CREATED':
-        const currency = currencyMapping[event.data.currency.toLowerCase()] || event.data.currency
-        return (
-          <span>
-            {event.data.name} was created{' '}
-            <span className={styles.createdAccount}>
-              🎊 <b>{currency}</b>
-            </span>
-          </span>
-        )
-      default:
-        return ''
-    }
-  }
-
+const Table = ({ rows }: ITableProps) => {
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th> ℹ Details</th>
-          <th> 📢 Notifications</th>
-        </tr>
-      </thead>
-      <tbody>
-        {rows.length &&
-          rows.map((row) => (
-            <tr
-              key={row.id}
-              className={clsx({
-                [styles.receivedRow as string]: row.type === 'TRANSACTION_RECEIVED',
-                [styles.sentRow as string]: row.type === 'TRANSACTION_SENT',
-                [styles.createdRow as string]: row.type === 'ACCOUNT_CREATED'
-              })}
-            >
-              <td>{row.id}</td>
-              <td>{formatData(row)}</td>
-              <td>
-                <Pill text={EventLabels[row.type]} eventType={row.type} /> &nbsp;
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+    <div className={styles.tableWrapper}>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th> ℹ Details</th>
+            <th> 📢 Notifications</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.length &&
+            rows.map((notification) => (
+              <tr
+                key={notification.id}
+                className={clsx({
+                  [styles.receivedRow as string]: notification.type === 'TRANSACTION_RECEIVED',
+                  [styles.sentRow as string]: notification.type === 'TRANSACTION_SENT',
+                  [styles.createdRow as string]: notification.type === 'ACCOUNT_CREATED'
+                })}
+              >
+                <td>{notification.id}</td>
+                <td>
+                  <NotificationData notification={notification} />
+                </td>
+                <td>
+                  <Pill text={EventLabels[notification.type]} eventType={notification.type} />{' '}
+                  &nbsp;
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

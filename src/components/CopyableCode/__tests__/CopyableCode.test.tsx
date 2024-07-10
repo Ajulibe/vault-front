@@ -1,3 +1,5 @@
+import * as clipboardUtils from '@/utils/copyToClipboard'
+
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen } from '@testing-library/react'
 
@@ -5,19 +7,19 @@ import CopyableCode from '../CopyableCode'
 
 describe('Components: CopyableCode.tsx', () => {
   const text = 'test text'
-  const onCopy = vi.fn()
   beforeEach(() => {
-    render(<CopyableCode text={text} onCopy={onCopy} />)
+    render(<CopyableCode text={text} />)
+    vi.clearAllMocks()
   })
 
   it('should render the text correctly', () => {
     expect(screen.getByText(text)).toBeInTheDocument()
   })
 
-  it('should call onCopy with the correct text when clicked', () => {
+  it('should call copyToClipboard and show success toast onClick', () => {
+    vi.spyOn(clipboardUtils, 'copyToClipboard').mockImplementation(() => Promise.resolve())
     fireEvent.click(screen.getByText(text))
-    expect(onCopy).toHaveBeenCalledWith(text)
-    expect(onCopy).toHaveBeenCalledTimes(1)
+    expect(clipboardUtils.copyToClipboard).toHaveBeenCalledWith(text, expect.any(Function))
   })
 
   it('should show the tooltip text on hover', () => {

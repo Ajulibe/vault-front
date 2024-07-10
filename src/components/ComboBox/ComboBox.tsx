@@ -1,4 +1,3 @@
-import React from 'react'
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { ReactSearchAutocompleteProps } from 'react-search-autocomplete/dist/components/ReactSearchAutocomplete'
 import { TNotificationItem } from '@/types'
@@ -13,7 +12,7 @@ interface IComboBoxProps extends ReactSearchAutocompleteProps<IComboBoxNotificat
   items: IComboBoxNotificationItem[]
 }
 
-const ComboBox: React.FC<IComboBoxProps> = ({ onChange, ...props }) => {
+const ComboBox = ({ onChange, ...props }: IComboBoxProps) => {
   const handleOnSelect = (item: IComboBoxNotificationItem) => {
     onChange(item.value)
   }

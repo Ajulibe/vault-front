@@ -8,12 +8,20 @@
   font-size: 12px;
 }
 
+.tableWrapper {
+  overflow: scroll;
+  width: 90vw;
+}
+
 .table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0px;
-  border: 1px solid $color-black-900;
+  border: 1px solid $color-gray-600;
   border-radius: 8px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
 
   tr {
     text-align: left;

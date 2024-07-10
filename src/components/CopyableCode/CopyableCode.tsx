@@ -1,23 +1,33 @@
-import React from 'react'
+import { copyToClipboard } from '@/utils/copyToClipboard'
 import styles from './CopyableCode.module.scss'
+import { toast } from 'react-toastify'
 
 interface ICopyableCodeProps {
   text: string
-  onCopy: (text: string) => void
 }
 
-const CopyableCode: React.FC<ICopyableCodeProps> = ({ text, onCopy }) => {
-  const handleCopy = () => {
-    onCopy(text)
+const CopyableCode = ({ text }: ICopyableCodeProps) => {
+  const notifySuccess = () => {
+    toast.success('Copied to clipboard')
+  }
+
+  const notifyError = () => {
+    toast.error('Failed to copy text')
+  }
+
+  const handleCopyData = async () => {
+    try {
+      await copyToClipboard(text, notifySuccess)
+    } catch {
+      notifyError()
+    }
   }
 
   return (
-    <div className={styles.copyableCodeWrapper}>
-      <code onClick={handleCopy} className={styles.code}>
-        {text}
-      </code>
+    <button className={styles.copyableCodeWrapper} onClick={handleCopyData}>
+      <code className={styles.code}>{text}</code>
       <span className={styles.copyText}>click to copy</span>
-    </div>
+    </button>
   )
 }
 

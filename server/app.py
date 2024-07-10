@@ -16,7 +16,6 @@ def search_handler():
     if not search_text:
         return jsonify(mock_data)
     filtered = [x for x in mock_data if search_text in x['type']]
-    print(filtered)
     return jsonify(filtered)
 
 if __name__ == '__main__':

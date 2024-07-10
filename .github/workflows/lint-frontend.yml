@@ -1,0 +1,32 @@
+name: Lint
+
+on:
+  workflow_run:
+    workflows: ["Install Dependencies"]
+    types:
+      - completed
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: npm install -g pnpm
+
+    - name: Cache pnpm store
+      uses: actions/cache@v2
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run linter
+      run: pnpm run lint

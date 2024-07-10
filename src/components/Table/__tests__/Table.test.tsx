@@ -1,9 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import { TNotification } from '@/types'
 import Table from '../Table'
-import { toast } from 'react-toastify'
 
 // Mock data
 const rows: TNotification[] = [
@@ -57,35 +56,25 @@ describe('Components: Table.tsx', () => {
     render(<Table rows={rows} />)
   })
 
+  const confirmTextPresence = (textArray: string[]) => {
+    textArray.forEach((text) => {
+      expect(screen.getByText(text)).toBeInTheDocument()
+    })
+  }
+
   it('should render without crashing', () => {
-    expect(screen.getByText('ID')).toBeInTheDocument()
-    expect(screen.getByText('ℹ Details')).toBeInTheDocument()
-    expect(screen.getByText('📢 Notifications')).toBeInTheDocument()
+    confirmTextPresence(['ID', 'ℹ Details', '📢 Notifications'])
   })
 
   it('should render transaction sent row correctly', () => {
-    expect(screen.getByText('0x123')).toBeInTheDocument()
-    expect(screen.getByText('sent')).toBeInTheDocument()
-    expect(screen.getByText('1ETH')).toBeInTheDocument()
-    expect(screen.getByText('0x456')).toBeInTheDocument()
+    confirmTextPresence(['0x123', 'sent', '1ETH', '0x456'])
   })
 
   it('should render transaction received row correctly', () => {
-    expect(screen.getByText('0xabc')).toBeInTheDocument()
-    expect(screen.getByText('received')).toBeInTheDocument()
-    expect(screen.getByText('2BTC')).toBeInTheDocument()
-    expect(screen.getByText('0x789')).toBeInTheDocument()
+    confirmTextPresence(['0xabc', 'received', '2BTC', '0x789'])
   })
 
   it('should render account created row correctly', () => {
-    expect(screen.getByText('Main Account was created')).toBeInTheDocument()
-    expect(screen.getByText('🎊')).toBeInTheDocument()
-    expect(screen.getByText('BTC')).toBeInTheDocument()
-  })
-
-  it('should trigger copy to clipboard and show toast notification', () => {
-    const copyableCode = screen.getAllByText('0x123')[0] as HTMLElement
-    fireEvent.click(copyableCode)
-    expect(toast).toHaveBeenCalledWith('Copied to clipboard')
+    confirmTextPresence(['Main Account was created', '🎊', 'BTC'])
   })
 })

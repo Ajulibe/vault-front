@@ -13,7 +13,7 @@ interface ISearchHeader {
   handleInputChange: (notification: string) => void
 }
 
-const SearchHeader: React.FC<ISearchHeader> = ({ handleInputChange }) => {
+const SearchHeader = ({ handleInputChange }: ISearchHeader) => {
   const comboOptions = useMemo(
     () =>
       Notification.map((notifications, index) => ({

@@ -1,6 +1,7 @@
 .copyableCodeWrapper {
   position: relative;
   display: inline-block;
+  background-color: transparent;
 
   .code {
     cursor: pointer;
@@ -25,7 +26,7 @@
     background-color: $color-black-900;
     color: $color-white-900;
     border-radius: 4px;
-    font-size: 0.75em;
+    font-size: 14px;
     opacity: 0;
     transition: opacity 0.3s;
   }

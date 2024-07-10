@@ -1,4 +1,5 @@
 declare const classNames: {
+  readonly tableWrapper: 'tableWrapper'
   readonly table: 'table'
   readonly receivedAmount: 'receivedAmount'
   readonly receivedRow: 'receivedRow'

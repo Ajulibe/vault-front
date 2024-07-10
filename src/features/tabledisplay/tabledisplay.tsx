@@ -8,7 +8,7 @@ interface ITableDisplayViewProps {
   isLoading: boolean
 }
 
-const TableDisplayView: React.FC<ITableDisplayViewProps> = ({ data, isLoading }) => {
+const TableDisplayView = ({ data, isLoading }: ITableDisplayViewProps) => {
   if (isLoading) return <Spinner />
 
   if (!data.length) return <div>No result...</div>
