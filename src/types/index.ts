@@ -1,6 +1,8 @@
 export type TNotificationType = 'TRANSACTION_SENT' | 'TRANSACTION_RECEIVED' | 'ACCOUNT_CREATED'
 
-export type TSearchNotifications = Array<{ name: string; value: TNotificationType | string }>
+export type TNotificationItem = { name: string; value: TNotificationType | string }
+
+export type TSearchNotifications = Array<TNotificationItem>
 
 export interface ITransactionNotificationsData {
   amount: number

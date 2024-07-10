@@ -1,0 +1,29 @@
+.searchHeaderWrapper {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.searchGuide {
+  margin-top: 8px;
+  font-size: 14px;
+  color: $color-gray-900;
+  margin-left: 4px;
+
+  span {
+    font-weight: bold;
+    margin: 0 4px;
+  }
+
+  .sent {
+    color: $color-red;
+  }
+
+  .created {
+    color: $color-blue-700;
+  }
+  .received {
+    color: $color-green;
+  }
+}

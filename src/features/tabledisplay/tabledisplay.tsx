@@ -1,7 +1,7 @@
 import Spinner from '@/components/Spinner/Spinner'
 import { TNotification } from '@/types'
 import Table from '@/components/Table/Table'
-import styles from './tabledisplay.module.scss'
+import styles from './TableDisplay.module.scss'
 
 interface ITableDisplayViewProps {
   data: TNotification[] | []

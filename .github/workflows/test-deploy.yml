@@ -38,68 +38,32 @@ jobs:
     - name: Run linter
       run: pnpm run lint
 
-  # test:
-  #   runs-on: ubuntu-latest
-  #   needs: lint
+  test:
+    runs-on: ubuntu-latest
+    needs: lint
 
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v2
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-  #   - name: Set up Node.js
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14'
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
 
-  #   - name: Install pnpm
-  #     run: npm install -g pnpm
+    - name: Install pnpm
+      run: npm install -g pnpm
 
-  #   - name: Cache pnpm store
-  #     uses: actions/cache@v2
-  #     with:
-  #       path: ~/.pnpm-store
-  #       key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-pnpm-
+    - name: Cache pnpm store
+      uses: actions/cache@v2
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-
 
-  #   - name: Install dependencies
-  #     run: pnpm install
+    - name: Install dependencies
+      run: pnpm install
 
-  #   - name: Run tests
-  #     run: pnpm test
-
-  # deploy:
-  #   runs-on: ubuntu-latest
-  #   needs: test
-
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v2
-
-  #   - name: Set up Node.js
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14'
-
-  #   - name: Install pnpm
-  #     run: npm install -g pnpm
-
-  #   - name: Cache pnpm store
-  #     uses: actions/cache@v2
-  #     with:
-  #       path: ~/.pnpm-store
-  #       key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-  #       restore-keys: |
-  #         ${{ runner.os }}-pnpm-
-
-  #   - name: Install dependencies
-  #     run: pnpm install
-
-  #   - name: Build project
-  #     run: pnpm run build
-
-  #   - name: Deploy to Vercel
-  #     run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
-  #     env:
-  #       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  #       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    - name: Run tests
+      run: pnpm test

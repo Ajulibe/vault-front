@@ -1,11 +1,9 @@
 import { TNotification, TSearchNotifications } from '@/types'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
-import TableDisplayView from '@/features/tabledisplay/tabledisplay'
-import TextField from '@/components/TextField/TextField'
-import debounce from 'lodash/debounce'
+import SearchHeader from '@/features/SearchHeader/SearchHeader'
+import TableDisplayView from '@/features/TableDisplay/TableDisplay'
 import { fetchNotifications } from '@/services'
-import { mapInputToNotificationType } from '@/utils/mapInputToNotificationType'
 import styles from './App.module.scss'
 
 export const Notification: TSearchNotifications = [
@@ -16,66 +14,34 @@ export const Notification: TSearchNotifications = [
 ]
 
 const App = () => {
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState<boolean>(false)
+  const [notificationText, setNotificationText] = useState<string>('')
   const [results, setResults] = useState<[] | TNotification[]>([])
-  const debounceDelay = useRef(300)
-  const activeRequests = useRef(0)
-  const abortControllerRef = useRef<AbortController | null>(null)
 
-  const fetchNotificationData = useCallback(async (notification: string) => {
-    activeRequests.current += 1
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort()
-    }
-    abortControllerRef.current = new AbortController()
-
+  const fetchNotificationData = useCallback(async () => {
     setLoading(true)
     try {
-      const data = await fetchNotifications(notification, abortControllerRef.current.signal)
+      const data = await fetchNotifications(notificationText)
       setResults(data)
     } catch (error) {
       console.error('Error fetching data:', error)
     } finally {
-      activeRequests.current -= 1
-      if (activeRequests.current === 0) {
-        setLoading(false)
-      }
+      setLoading(false)
     }
-  }, [])
+  }, [notificationText])
 
-  const debouncedFetchNotificationData = useRef(
-    debounce((notification: string) => {
-      fetchNotificationData(notification)
-    }, debounceDelay.current)
-  ).current
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value
-    const mappedValue = mapInputToNotificationType(inputValue)
-    debouncedFetchNotificationData(mappedValue)
+  const handleInputChange = (notification: string) => {
+    setNotificationText(notification)
   }
 
   useEffect(() => {
-    fetchNotificationData('')
-
-    return () => {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort()
-      }
-    }
+    fetchNotificationData()
   }, [fetchNotificationData])
 
   return (
     <div className={styles.app}>
-      <div className={styles.textFieldWrapper}>
-        <TextField onChange={handleInputChange} placeholder="Search by notification type" />
-        <small className={styles.searchGuide}>
-          Tip: You can search for notifications by typing words like
-          <span className={styles.sent}>"sent"</span>,
-          <span className={styles.received}>"received"</span>, or
-          <span className={styles.created}>"created"</span>.
-        </small>
-      </div>
+      <div className={styles.titleText}>Notification Dashboard</div>
+      <SearchHeader handleInputChange={handleInputChange} />
       <TableDisplayView isLoading={isLoading} data={results} />
     </div>
   )

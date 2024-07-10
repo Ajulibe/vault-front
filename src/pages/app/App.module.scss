@@ -3,30 +3,9 @@
   flex-direction: column;
 }
 
-.textFieldWrapper {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.searchGuide {
-  margin-top: 8px;
-  font-size: 14px;
-  color: $color-gray-900;
-
-  span {
-    font-weight: bold;
-    margin: 0 4px;
-  }
-
-  .sent {
-    color: $color-red;
-  }
-
-  .created {
-    color: $color-blue-700;
-  }
-  .received {
-    color: $color-green;
-  }
+.titleText {
+  font-size: 50px;
+  margin-bottom: 32px;
+  font-weight: bold;
+  letter-spacing: -4px;
 }

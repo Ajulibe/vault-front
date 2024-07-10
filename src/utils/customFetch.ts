@@ -1,6 +1,6 @@
-export async function customFetch(url: string, errorMessage: string, signal: AbortSignal) {
+export async function customFetch(url: string, errorMessage: string) {
   try {
-    const response = await fetch(url, { signal })
+    const response = await fetch(url)
     if (!response.ok) {
       throw new Error(`${errorMessage}: ${response.status} ${response.statusText}`)
     }
