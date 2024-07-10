@@ -27,7 +27,7 @@ const Table = ({ rows }: ITableProps) => {
           </tr>
         </thead>
         <tbody>
-          {rows.length &&
+          {Boolean(rows.length) &&
             rows.map((notification) => (
               <tr
                 key={notification.id}

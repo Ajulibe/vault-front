@@ -27,7 +27,7 @@ const SearchHeader = ({ handleInputChange }: ISearchHeader) => {
     <div className={styles.searchHeaderWrapper}>
       <ComboBox
         items={comboOptions}
-        placeholder="Search or select a notification type"
+        placeholder="search for a notification type"
         onChange={handleInputChange}
       />
       <small className={styles.searchGuide}>

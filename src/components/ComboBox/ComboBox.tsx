@@ -39,7 +39,7 @@ const ComboBox = ({ onChange, ...props }: IComboBoxProps) => {
         onSearch={handleOnSearch}
         formatResult={formatResult}
         placeholder="Search or select an option"
-        showIcon={false}
+        showIcon={true}
         onClear={handleClearInput}
         className={styles.combo as string}
         {...props}
