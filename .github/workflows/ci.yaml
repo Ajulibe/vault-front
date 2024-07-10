@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install-dependencies:
+    uses: ./.github/workflows/install-dependencies.yml
+
+  lint:
+    needs: install-dependencies
+    uses: ./.github/workflows/lint-frontend.yml
+
+  test:
+    needs: lint
+    uses: ./.github/workflows/test-frontend.yml
+
+  sonar:
+    needs: test
+    uses: ./.github/workflows/sonar-cube-analysis.yml

@@ -1,11 +1,10 @@
 name: SonarCloud Analysis
 
-on: [push, pull_request]
+on: workflow_call
 
 jobs:
   sonar:
     runs-on: ubuntu-latest
-    needs: test
 
     steps:
       - name: Checkout code
