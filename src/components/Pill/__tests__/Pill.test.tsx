@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
-import { NotificationColors } from '@/types'
+import { ENotificationColors } from '@/constants/notificationColors'
 import Pill from '../Pill'
 import { rgbaToRgb } from '@/utils/rgbaToRgb'
 
@@ -16,7 +16,7 @@ describe('Components: Pill.tsx', () => {
     const pillElement = screen.getByText('Account Created').closest('span')
     const dotElement = screen.getByText('Account Created').previousSibling as HTMLElement
 
-    const color = NotificationColors['ACCOUNT_CREATED']
+    const color = ENotificationColors['ACCOUNT_CREATED']
     const lightColor = rgbaToRgb(color, 0.1)
     const dotColor = rgbaToRgb(color, 0.6)
 

@@ -1,14 +1,10 @@
-import { NotificationColors } from '@/types'
+import { ENotificationColors } from '@/constants/notificationColors'
+import type { PillProps } from '@/types'
 import { rgbaToRgb } from '@/utils/rgbaToRgb'
 import styles from './Pill.module.scss'
 
-interface PillProps {
-  text: string
-  eventType: keyof typeof NotificationColors
-}
-
 const Pill = ({ text, eventType }: PillProps) => {
-  const color = NotificationColors[eventType]
+  const color = ENotificationColors[eventType]
   const lightColor = rgbaToRgb(color, 0.1)
   const dotColor = rgbaToRgb(color, 0.6)
 

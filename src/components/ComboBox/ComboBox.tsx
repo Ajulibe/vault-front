@@ -1,16 +1,7 @@
+import type { IComboBoxNotificationItem, IComboBoxProps } from '@/types'
+
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import { ReactSearchAutocompleteProps } from 'react-search-autocomplete/dist/components/ReactSearchAutocomplete'
-import { TNotificationItem } from '@/types'
 import styles from './ComboBox.module.scss'
-
-interface IComboBoxNotificationItem extends TNotificationItem {
-  id: string
-}
-
-interface IComboBoxProps extends ReactSearchAutocompleteProps<IComboBoxNotificationItem> {
-  onChange: (value: string) => void
-  items: IComboBoxNotificationItem[]
-}
 
 const ComboBox = ({ onChange, ...props }: IComboBoxProps) => {
   const handleOnSelect = (item: IComboBoxNotificationItem) => {

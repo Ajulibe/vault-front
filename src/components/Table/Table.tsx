@@ -1,19 +1,9 @@
-import { TNotification, TNotificationType } from '@/types'
-
+import { EventLabels } from '@/constants/eventLabels'
+import type { ITableProps } from '@/types'
 import NotificationData from './NotificationData'
 import Pill from '../Pill/Pill'
 import clsx from 'clsx'
 import styles from './Table.module.scss'
-
-interface ITableProps {
-  rows: TNotification[]
-}
-
-export const EventLabels: { [key in TNotificationType]: string } = {
-  TRANSACTION_SENT: 'Transactions sent',
-  TRANSACTION_RECEIVED: 'Transactions received',
-  ACCOUNT_CREATED: 'Account created'
-}
 
 const Table = ({ rows }: ITableProps) => {
   return (

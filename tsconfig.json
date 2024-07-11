@@ -34,7 +34,8 @@
     "baseUrl": ".",
     "types": ["@testing-library/jest-dom"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@types/*": ["types/*"]
     }
   },
   "include": ["src", "vite.config.ts", "**/*.ts", "**/*.d.ts"],

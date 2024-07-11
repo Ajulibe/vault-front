@@ -1,17 +1,8 @@
 import ComboBox from '@/components/ComboBox/ComboBox'
-import { TSearchNotifications } from '@/types'
+import type { ISearchHeader } from '@/types'
+import Notification from '@/constants/notifications'
 import styles from './SearchHeader.module.scss'
 import { useMemo } from 'react'
-
-export const Notification: TSearchNotifications = [
-  { name: 'All Notification', value: '' },
-  { name: 'Transactions sent', value: 'TRANSACTION_SENT' },
-  { name: 'Transactions received', value: 'TRANSACTION_RECEIVED' },
-  { name: 'Account created', value: 'ACCOUNT_CREATED' }
-]
-interface ISearchHeader {
-  handleInputChange: (notification: string) => void
-}
 
 const SearchHeader = ({ handleInputChange }: ISearchHeader) => {
   const comboOptions = useMemo(

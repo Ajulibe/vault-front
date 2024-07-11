@@ -1,19 +1,12 @@
-import { Component, ErrorInfo, ReactNode } from 'react'
+import type { ErrorBoundaryProps, ErrorBoundaryState } from '@/types'
+import { Component, ErrorInfo } from 'react'
 
-interface Props {
-  children?: ReactNode
-}
-
-interface State {
-  hasError: boolean
-}
-
-class ErrorBoundary extends Component<Props, State> {
-  override state: State = {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  override state: ErrorBoundaryState = {
     hasError: false
   }
 
-  static getDerivedStateFromError(): State {
+  static getDerivedStateFromError(): ErrorBoundaryState {
     return { hasError: true }
   }
 
