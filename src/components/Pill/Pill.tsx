@@ -1,5 +1,5 @@
 import { ENotificationColors } from '@/constants/notificationColors'
-import type { PillProps } from '@/types'
+import type { PillProps } from './Pill.types'
 import { rgbaToRgb } from '@/utils/rgbaToRgb'
 import styles from './Pill.module.scss'
 

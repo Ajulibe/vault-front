@@ -1,4 +1,4 @@
-import { TSearchNotifications } from '@/types'
+import type { TSearchNotifications } from '@/types/sharedTypes'
 
 const Notification: TSearchNotifications = [
   { name: 'All Notification', value: '' },

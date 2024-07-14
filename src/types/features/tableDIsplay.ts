@@ -1,4 +1,4 @@
-import type { TNotification } from '@/types'
+import type { TNotification } from '../sharedTypes'
 
 export interface ITableDisplayViewProps {
   data: TNotification[] | []

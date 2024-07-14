@@ -1,4 +1,4 @@
-import type { IComboBoxNotificationItem, IComboBoxProps } from '@/types'
+import type { IComboBoxNotificationItem, IComboBoxProps } from './ComboBox.types'
 
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import styles from './ComboBox.module.scss'

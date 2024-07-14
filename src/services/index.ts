@@ -1,4 +1,4 @@
-import { TNotification } from '@/types'
+import type { TNotification } from '@/types/sharedTypes'
 import { customFetch } from '@/utils/customFetch'
 
 const BASE_URL = import.meta.env['VITE_API_BASE_URL']

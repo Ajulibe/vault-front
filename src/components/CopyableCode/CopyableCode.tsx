@@ -1,4 +1,4 @@
-import type { ICopyableCodeProps } from '@/types'
+import type { ICopyableCodeProps } from './CopyableCode.types'
 import { copyToClipboard } from '@/utils/copyToClipboard'
 import styles from './CopyableCode.module.scss'
 import { toast } from 'react-toastify'

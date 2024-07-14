@@ -1,5 +1,5 @@
 import { EventLabels } from '@/constants/eventLabels'
-import type { ITableProps } from '@/types'
+import type { ITableProps } from './Table.types'
 import NotificationData from './NotificationData'
 import Pill from '../Pill/Pill'
 import clsx from 'clsx'

@@ -1,4 +1,4 @@
-import { TNotificationType } from '@/types'
+import type { TNotificationType } from '@/types/sharedTypes'
 
 export const EventLabels: { [key in TNotificationType]: string } = {
   TRANSACTION_SENT: 'Transactions sent',
