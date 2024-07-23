@@ -1,6 +1,7 @@
 import CopyableCode from '@/components/CopyableCode/CopyableCode'
-import { TNotification } from '@/types'
+
 import styles from './Table.module.scss'
+import { TNotification } from '@/types/sharedTypes'
 
 const currencyMapping: { [key: string]: string } = {
   bitcoin: 'BTC',

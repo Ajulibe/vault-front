@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
-import { TNotification } from '@/types'
+import { TNotification } from '@/types/sharedTypes'
 import Table from '../Table'
 
 // Mock data
