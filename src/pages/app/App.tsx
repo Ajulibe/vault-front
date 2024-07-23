@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 
 import SearchHeader from '@/features/SearchHeader/SearchHeader'
 import { TNotification } from '@/types/sharedTypes'
-import TableDisplayView from '@/features/TableDisplay/tabledisplay'
+import TableDisplayView from '@/features/TableDisplay/TableDisplay'
 import { fetchNotifications } from '@/services'
 import styles from './App.module.scss'
 
